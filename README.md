@@ -31,37 +31,7 @@ http://localhost:8080
 
 Quotes are stored in a local H2 database file under `./data/quotes-db`, so data stays available after server restarts.
 
-## Publish to GitHub
-
-Create a public repository on GitHub, for example:
-
-```text
-backend-coding-test
-```
-
-Then connect this local repository to GitHub:
-
-```bash
-git remote add origin https://github.com/YOUR_USERNAME/backend-coding-test.git
-git push -u origin main
-```
-
-If the remote already exists, use:
-
-```bash
-git remote set-url origin https://github.com/YOUR_USERNAME/backend-coding-test.git
-git push -u origin main
-```
-
-Submission checklist:
-
-- Repository is public.
-- README contains build and run instructions.
-- Tests are included under `src/test`.
-- SQL solution is included under `src/main/resources/sql`.
-- The quotes API stores data between server restarts.
-
-## Quotes API
+## Task 9: Quotes API
 
 ### Create quote
 
@@ -130,7 +100,7 @@ Quote fields are validated:
 
 Invalid requests return HTTP `400` with a JSON error response.
 
-## Task 1: linked list
+## Task 7: Linked List
 
 Solution:
 
