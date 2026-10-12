@@ -53,6 +53,14 @@ git remote set-url origin https://github.com/YOUR_USERNAME/backend-coding-test.g
 git push -u origin main
 ```
 
+Submission checklist:
+
+- Repository is public.
+- README contains build and run instructions.
+- Tests are included under `src/test`.
+- SQL solution is included under `src/main/resources/sql`.
+- The quotes API stores data between server restarts.
+
 ## Quotes API
 
 ### Create quote
