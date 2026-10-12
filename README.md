@@ -1,35 +1,52 @@
-# Backend Coding Test
+# Backend Developer Coding Test
 
 This repository contains solutions for three tasks:
 
-1. Finding the node at index `floor(2 * n / 3) - 1` in a singly linked list.
-2. PostgreSQL schema and query for students, disciplines, and discipline groups.
-3. Spring Boot REST API for sharing quotes.
+- Task 7: singly linked list lookup.
+- Task 8: PostgreSQL schema and query.
+- Task 9: Spring Boot quotes API.
 
 ## Requirements
 
 - Java 17+
 - Maven 3.9+
 
-## Run tests
+## Run
 
 ```bash
 mvn test
-```
-
-## Run the quotes API
-
-```bash
 mvn spring-boot:run
 ```
 
-The API starts on:
+The API starts at `http://localhost:8080`.
+Quotes are stored in a local H2 database file under `./data/quotes-db`, so they remain available after server restarts.
 
-```text
-http://localhost:8080
-```
+## Task 7: Linked List
 
-Quotes are stored in a local H2 database file under `./data/quotes-db`, so data stays available after server restarts.
+Solution:
+
+- [`Node.java`](src/main/java/com/example/codingtest/linkedlist/Node.java)
+- [`TwoThirdsOfLinkedList.java`](src/main/java/com/example/codingtest/linkedlist/TwoThirdsOfLinkedList.java)
+
+The method returns the node at index `floor(2 * n / 3) - 1` for `n > 1`; otherwise it returns `null`.
+
+Complexity:
+
+- Time: `O(n)`
+- Extra memory: `O(1)`
+- One pass over the list.
+
+Tests:
+
+- [`TwoThirdsOfLinkedListTest.java`](src/test/java/com/example/codingtest/linkedlist/TwoThirdsOfLinkedListTest.java)
+
+## Task 8: SQL
+
+PostgreSQL solution:
+
+- [`task8_students_disciplines.sql`](src/main/resources/sql/task8_students_disciplines.sql)
+
+The many-to-many relationship is represented by `student_discipline_groups`, which also stores the group number for a student within a discipline.
 
 ## Task 9: Quotes API
 
@@ -99,33 +116,6 @@ Quote fields are validated:
 - `text`: required, max 1000 characters.
 
 Invalid requests return HTTP `400` with a JSON error response.
-
-## Task 7: Linked List
-
-Solution:
-
-- [`src/main/java/com/example/codingtest/linkedlist/Node.java`](src/main/java/com/example/codingtest/linkedlist/Node.java)
-- [`src/main/java/com/example/codingtest/linkedlist/TwoThirdsOfLinkedList.java`](src/main/java/com/example/codingtest/linkedlist/TwoThirdsOfLinkedList.java)
-
-Algorithm:
-
-- If the list has `0` or `1` element, return `null`.
-- During one traversal, keep the current length and the current answer node.
-- When `floor(2 * length / 3) - 1` increases, move the answer node one step forward.
-
-Complexity:
-
-- Time: `O(n)`
-- Extra memory: `O(1)`
-- One pass over the list.
-
-## Task 8: SQL
-
-PostgreSQL solution:
-
-- [`src/main/resources/sql/task8_students_disciplines.sql`](src/main/resources/sql/task8_students_disciplines.sql)
-
-The many-to-many relationship is represented by `student_discipline_groups`, which also stores the group number for a student within a discipline.
 
 ## Project structure
 
